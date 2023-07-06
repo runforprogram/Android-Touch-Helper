@@ -273,7 +273,7 @@ public class TouchHelperServiceImpl {
                             currentActivityName = actName;
                             // stop current skip ad process if it exists
                             stopSkipAdProcess();
-                            if(setPackages.contains(pkgName)) {
+                            if(!setWhiteList.contains(pkgName)) {
                                 // if the package is in our list, start skip ads process
                                 // this is the only place to start skip ad process
                                 startSkipAdProcess();
@@ -492,6 +492,7 @@ public class TouchHelperServiceImpl {
                     Rect rect = new Rect();
                     node.getBoundsInScreen(rect);
                     click(rect.centerX(), rect.centerY(), 0, 20);
+                    Log.d(TAG, "click position = "+ rect.centerX() + ", " + rect.centerY());
                 }
 
                 // is it possible that there are more nodes to click and this node does not work?
